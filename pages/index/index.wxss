@@ -1,6 +1,5 @@
-/**index.wxss**/
 .search-pic {
-  background: #000;
+  
 }
 
 .search-container {
@@ -32,4 +31,14 @@
 
 .search-btn-hover {
   transform: rotateY(0deg);
+}
+.search-result {
+  margin-top: 10rpx;
+  padding: 50rpx;
+}
+
+.show-more {
+  color: #fff;
+  font-size: 14px;
+  text-align: right;
 }

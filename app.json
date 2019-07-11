@@ -27,5 +27,9 @@
         "selectedIconPath": "./assets/icons/video-selected.png"
       }
     ]
+  },
+  "networkTimeout": {
+    "uploadFile": 10000,
+    "request": 10000
   }
 }

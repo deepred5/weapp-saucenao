@@ -1,0 +1,31 @@
+
+.result-item {
+  padding: 20rpx;
+  color: #fff;
+  font-size: 14px;
+  border: 10rpx solid #fff;
+  display: flex;
+  position: relative;
+  margin-bottom: 80rpx;
+}
+
+.thumbnail {
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-info .desc {
+  margin-bottom: 10rpx;
+}
+
+.similarity {
+  font-size: 12px;
+  position: absolute;
+  top: -50rpx;
+  right: -10rpx;
+}

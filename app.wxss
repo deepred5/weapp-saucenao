@@ -1,4 +1,5 @@
 /**app.wxss**/
-.container, page {
+page {
   height: 100%;
+  background: #000;
 } 

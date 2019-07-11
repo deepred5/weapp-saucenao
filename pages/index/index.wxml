@@ -6,4 +6,15 @@
   <view class="search-btn-container">
     <button class="search-btn" bindtap="selectPic" hover-class="search-btn-hover">选择图片</button>
   </view>
+  <view class="search-result">
+    <block wx:for="{{highSimilarityResults}}" wx:key="{{index}}">
+      <result-item-card cardData="{{item}}" />
+    </block>
+    <view class="show-more" wx:if="{{lowSimilarityResults.length > 0 && !showMore}}" bindtap="showMore">
+      <text>查看更多</text>
+    </view>
+    <block wx:for="{{lowSimilarityResults}}" wx:key="{{index}}" wx:if="{{showMore}}">
+      <result-item-card cardData="{{item}}" />
+    </block>
+  </view>
 </view>
