@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/video/video"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#c9171e",
+    "navigationBarTitleText": "Anime搜图",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#c9171e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "搜图",
+        "iconPath": "./assets/icons/pic.png",
+        "selectedIconPath": "./assets/icons/pic-selected.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "搜动画",
+        "iconPath": "./assets/icons/video.png",
+        "selectedIconPath": "./assets/icons/video-selected.png"
+      }
+    ]
+  }
+}

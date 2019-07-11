@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container search-pic">
+  <view class="search-container">
+    <image src="{{selectedPath}}" style="height: 100%" mode="aspectFit"></image>
+  </view>
+  <view class="search-btn-container">
+    <text class="search-btn" bindtap="selectPic">选择图片</text>
+  </view>
+</view>
