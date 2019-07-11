@@ -30,7 +30,7 @@ Page({
         console.log(tempFilePaths);
         this.setData({
           selectedPath: tempFilePaths[0]
-        })
+        }, this.searchResult)
       }
     })
   },
@@ -44,7 +44,40 @@ Page({
         console.log(tempFilePaths);
         this.setData({
           selectedPath: tempFilePaths[0]
-        });
+        }, this.searchResult);
+      }
+    })
+  },
+
+  searchResult() {
+    wx.showLoading({
+      title: '搜索中',
+    });
+    const { selectedPath} = this.data;
+    wx.uploadFile({
+      url: 'https://www.whitealbum.cc/search.php',
+      filePath: selectedPath,
+      name: 'file',
+      formData: {
+        'output_type': 2
+      },
+      success: (res) => {
+        const data = JSON.parse(res.data);
+        console.log(data);
+        this.setData({
+          results: data.results
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: '搜索失败',
+          icon: 'none',
+          duration: 1500
+        })
+
+      },
+      complete: () => {
+        wx.hideLoading();
       }
     })
   }
