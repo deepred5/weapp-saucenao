@@ -3,3 +3,9 @@ page {
   height: 100%;
   background: #000;
 } 
+
+.text-shadow {
+  text-shadow: 2px 2px 0 #fc0d1b;
+  transform: perspective(500px) skew(-15deg) rotateY(-15deg);
+  display: inline-block;
+}

@@ -19,13 +19,14 @@
   width: 400rpx;
   background: #000;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   height: 100rpx;
   line-height: 80rpx;
   border-radius: 0;
   border: 10rpx solid #fff;
-  transform: perspective(500px) skew(-5deg) rotateY(-5deg);
+  transform: perspective(500px) skew(-15deg) rotateY(-10deg);
   box-shadow: 0 0 0 10rpx #c9171e;
+  transition: transform .5s;
 }
 
 .search-btn-hover {

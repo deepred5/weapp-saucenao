@@ -1,15 +1,35 @@
 <wxs src="../../utils/util.wxs" module="util" />
 
 <view class="result-item">
-  <text class="similarity">{{cardData.header.similarity}}%</text>
-  <image style="width: 200rpx;" class="thumbnail" src="{{cardData.header.thumbnail}}" mode="widthFix"></image>
+  <text class="similarity text-shadow">{{cardData.header.similarity}}%</text>
+  <view class="thumbnail">
+    <image style="width: 200rpx;" src="{{cardData.header.thumbnail}}" mode="widthFix"></image>
+  </view>
   <view class="result-info">
-    <text class="desc" wx:if="{{cardData.data.title}}">{{cardData.data.title}}</text>
-    <text class="desc" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') === -1}}">{{cardData.data.source}}</text>
-    <text class="desc" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') > -1}}" bindtap="clipboard" data-content="{{cardData.data.source}}">Source(点击粘贴)</text>
-    <text class="desc" wx:if="{{cardData.data.creator}}">Creator: {{cardData.data.creator}}</text>
-    <text class="desc" wx:elif="{{cardData.data.member_name}}">Member: {{cardData.data.member_name}}</text>
-    <text class="desc" wx:elif="{{cardData.data.author_name}}">Author: {{cardData.data.author_name}}</text>
-    <text class="desc" wx:if="{{cardData.data.pixiv_id}}">Pixiv ID: {{cardData.data.pixiv_id}}</text>
+    <text selectable class="desc" wx:if="{{cardData.data.title}}">{{cardData.data.title}}</text>
+    <text selectable class="desc" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') === -1}}">{{cardData.data.source}}</text>
+    <view class="has-copy" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') > -1}}">
+      <text class="desc text-shadow">来源</text>
+      <view class="copy-container" bindtap="clipboard" data-content="{{cardData.data.source}}">
+        <text class="copy1">复</text>
+        <text class="copy2">制</text>
+      </view>
+
+    </view>
+    <text selectable class="desc" wx:if="{{cardData.data.creator}}"><text class="text-shadow">Creator:</text> {{cardData.data.creator}}</text>
+    <text selectable class="desc" wx:elif="{{cardData.data.member_name}}"><text class="text-shadow">Member:</text> {{cardData.data.member_name}}</text>
+    <text selectable class="desc" wx:elif="{{cardData.data.author_name}}"><text class="text-shadow">Author:</text> {{cardData.data.author_name}}</text>
+    <text selectable class="desc" wx:elif="{{cardData.data.author}}"><text class="text-shadow">Author:</text> {{cardData.data.author}}</text>
+    <text selectable class="desc" wx:elif="{{cardData.data.artist}}"><text class="text-shadow">Artist:</text> {{cardData.data.artist}}</text>
+    <text selectable class="desc" wx:if="{{cardData.data.pixiv_id}}"><text class="text-shadow">Pixiv ID:</text> {{cardData.data.pixiv_id}}</text>
+    <text selectable class="desc" wx:if="{{cardData.data.material}}"><text class="text-shadow">Material:</text> {{cardData.data.material}}</text>
+    <text selectable class="desc" wx:if="{{cardData.data.characters}}"><text class="text-shadow">Characters:</text> {{cardData.data.characters}}</text>
+    <view class="has-copy" wx:if="{{cardData.data.ext_urls && cardData.data.ext_urls.length}}">
+      <text class="desc text-shadow">相关链接</text>
+      <view class="copy-container" bindtap="clipboard" data-content="{{util.join(cardData.data.ext_urls)}}">
+        <text class="copy1">复</text>
+        <text class="copy2">制</text>
+      </view>
+    </view>
   </view>
 </view>

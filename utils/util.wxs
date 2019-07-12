@@ -1,6 +1,13 @@
 function indexOf(str, target) {
   return str.indexOf(target);
 }
+
+function join(arr, str) {
+  str = str || '\n\n';
+  return arr.join(str)
+}
+
 module.exports = {
-  indexOf: indexOf
+  indexOf: indexOf,
+  join: join
 }

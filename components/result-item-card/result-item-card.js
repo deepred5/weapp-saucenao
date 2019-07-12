@@ -23,13 +23,10 @@ Component({
    */
   methods: {
     clipboard(e) {
-      const content = e.target.dataset.content;
+      const content = e.currentTarget.dataset.content;
 
       wx.setClipboardData({
-        data: content,
-        success(res) {
-          console.log('res', res);
-        }
+        data: content
       })
     }
   },
@@ -37,7 +34,6 @@ Component({
     // 组件所在页面的生命周期函数
     show: function () {
       console.log('show');
-      console.log(this.data)
     },
     hide: function () { },
     resize: function () { },

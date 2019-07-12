@@ -26,6 +26,36 @@
   position: absolute;
   top: -50rpx;
   right: -10rpx;
-  text-shadow: 2px 2px 0 #fc0d1b;
-  transform: perspective(500px) skew(-15deg) rotateY(-15deg);
+}
+
+.copy-container {
+  border: 2px solid #fff;
+  display: inline-block;
+  padding: 0 5px;
+  margin-left: 52rpx;
+  transform: perspective(300px) skew(-15deg) rotateY(-5deg);
+  position: relative;
+}
+.copy-container::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 50rpx;
+  background: #fff;
+  left: -50rpx;
+  top: 18rpx;
+  font-weight: lighter;
+}
+.copy1 {
+  color: #fff;
+  -webkit-text-stroke: 1rpx #c9171e;
+}
+
+.copy2 {
+  color: #000;
+  -webkit-text-stroke: 1rpx #fff;
+}
+
+.has-copy {
+  padding: 12rpx 0;
 }

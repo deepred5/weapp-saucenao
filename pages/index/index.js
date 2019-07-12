@@ -1,146 +1,108 @@
 //index.js
 //获取应用实例
 const app = getApp();
-const apiKey = require('../../constants/apiKey.js');
 const { picSearchAPI } = require('../../constants/config.js');
+const apiKey = require('../../constants/apiKey.js');
 
-const mock = [
-  {
-    "header": {
-      "similarity": "82.47",
-      "thumbnail": "https://img1.saucenao.com/res/nhentai/276619%20%281437652%29%20--%20%28COMIC1%E2%98%8615%29%20%5BSonic%20Boom%20%28hews%29%5D%20Fate%20Lewd%20Order%20%28Fate_Grand%20Order%29/5.jpg?auth=Pkkgo_xXubhZsARp-hPQnw&exp=1562909847",
-      "index_id": 18,
-      "index_name": "Index #18: H-Misc - 5.jpg"
-    },
-    "data": {
-      "source": "Fate Lewd Order",
-      "creator": [
-        "hews"
-      ],
-      "eng_name": "(COMIC1☆15) [Sonic Boom (hews)] Fate Lewd Order (Fate_Grand Order)",
-      "jp_name": "(COMIC1☆15) [ソニックブーム (hews)] Fate Lewd Order (Fate/Grand Order)"
-    }
+const mock = [{
+  "header": {
+    "similarity": "95.57",
+    "thumbnail": "https:\/\/img1.saucenao.com\/res\/pixiv\/7514\/75140670_p0_master1200.jpg?auth=CTwAep7ckK1faK57rZf83Q\u0026exp=1562940106",
+    "index_id": 5,
+    "index_name": "Index #5: Pixiv Images - 75140670_p0_master1200.jpg"
   },
-  {
-    "header": {
-      "similarity": "93.57",
-      "thumbnail": "https://img3.saucenao.com/booru/6/5/65bf250a12a728222263f05b6ef72834_1.jpg",
-      "index_id": 12,
-      "index_name": "Index #12: Yande.re - 65bf250a12a728222263f05b6ef72834_1.jpg"
-    },
-    "data": {
-      "ext_urls": [
-        "https://danbooru.donmai.us/post/show/3431177",
-        "https://yande.re/post/show/522191",
-        "https://gelbooru.com/index.php?page=post&s=view&id=4629252"
-      ],
-      "danbooru_id": 3431177,
-      "yandere_id": 522191,
-      "gelbooru_id": 4629252,
-      "creator": "hews",
-      "material": "fate/grand order, fate (series)",
-      "characters": "ereshkigal (fate/grand order), fujimaru ritsuka, ishtar (fate/grand order)",
-      "source": ""
-    }
-  },
-  {
-    "header": {
-      "similarity": "92.40",
-      "thumbnail": "https://img3.saucenao.com/booru/0/7/07a17b9f4fcede2a73bcac3d0b9a5c7a_0.jpg",
-      "index_id": 9,
-      "index_name": "Index #9: Danbooru - 07a17b9f4fcede2a73bcac3d0b9a5c7a_0.jpg"
-    },
-    "data": {
-      "ext_urls": [
-        "https://danbooru.donmai.us/post/show/3420757",
-        "https://gelbooru.com/index.php?page=post&s=view&id=4615461"
-      ],
-      "danbooru_id": 3420757,
-      "gelbooru_id": 4615461,
-      "creator": "hews hack",
-      "material": "fate/grand order, fate (series)",
-      "characters": "ereshkigal (fate/grand order), fujimaru ritsuka (male), ishtar (fate/grand order)",
-      "source": "https://twitter.com/hews__/status/1097391265606295552"
-    }
-  },
-  {
-    "header": {
-      "similarity": "39.64",
-      "thumbnail": "https://img1.saucenao.com/res/nhentai/56333%20%28326309%29%20--%20COMIC%20HOTMiLK%202011-02/67.jpg?auth=ER-KhVhRMe6ofAr6s3RM3g&exp=1562909847",
-      "index_id": 18,
-      "index_name": "Index #18: H-Misc - 67.jpg"
-    },
-    "data": {
-      "source": "COMIC HOTMiLK 2011-02",
-      "creator": [
-        "shimamura",
-        "89",
-        "kizuki aruchu",
-        "wamusato haru",
-        "minato fumi",
-        "kurogane ken",
-        "rakko",
-        "jingrock",
-        "a-10",
-        "saburou",
-        "tsukino jyogi",
-        "kisaragi gunma",
-        "azuma yuki",
-        "ha-ru",
-        "inoue kiyoshirou",
-        "kurosaki rendou",
-        "shinama",
-        "amatarou"
-      ],
-      "eng_name": "COMIC HOTMiLK 2011-02",
-      "jp_name": "[雑誌] COMIC HOTMiLK 2011年02月号"
-    }
-  },
-  {
-    "header": {
-      "similarity": "39.53",
-      "thumbnail": "https://img1.saucenao.com/res/nhentai/261609%20%281356829%29%20--%20%28C94%29%20%5BCircle%20Taihei-Tengoku%20%28Horikawa%20Gorou%29%5D%20Kurenai%20no%20Kishidan%20Hokan/38.jpg?auth=AIQ-AVpGMb-bbFVCDBdRxw&exp=1562909847",
-      "index_id": 18,
-      "index_name": "Index #18: H-Misc - 38.jpg"
-    },
-    "data": {
-      "source": "Kurenai no Kishidan Hokan",
-      "creator": [
-        "horikawa gorou"
-      ],
-      "eng_name": "(C94) [Circle Taihei-Tengoku (Horikawa Gorou)] Kurenai no Kishidan Hokan",
-      "jp_name": "(C94) [サークル太平天国 (堀川悟郎)] 紅の騎士団 補巻"
-    }
-  },
-  {
-    "header": {
-      "similarity": "39.1",
-      "thumbnail": "https://img1.saucenao.com/res/mangadex/259/259774/M14.jpg?auth=s5ZaScd8U_d-qTrlHsf7ZQ&exp=1562909847",
-      "index_id": 37,
-      "index_name": "Index #37: MangaDex - M14.jpg"
-    },
-    "data": {
-      "ext_urls": [
-        "https://mangadex.org/chapter/259774/",
-        "https://www.mangaupdates.com/series.html?id=2800",
-        "https://myanimelist.net/manga/1345/"
-      ],
-      "md_id": 259774,
-      "mu_id": 2800,
-      "mal_id": 1345,
-      "source": "Suzumiya Haruhi no Yuuutsu",
-      "part": " - Chapter 12",
-      "artist": "Tsugano Gaku",
-      "author": "Tanigawa Nagaru"
-    }
+  "data": {
+    "ext_urls": ["https:\/\/www.pixiv.net\/member_illust.php?mode=medium\u0026illust_id=75140670"],
+    "title": "\u7406\u6027",
+    "pixiv_id": 75140670,
+    "member_name": "\u307f\u3064\u3069\u3046\u3048",
+    "member_id": 6526081
   }
-];
+}, {
+  "header": {
+    "similarity": "95.44",
+    "thumbnail": "https:\/\/img3.saucenao.com\/booru\/0\/3\/03946f1592779783c79a4708dc4bb956_2.jpg",
+    "index_id": 12,
+    "index_name": "Index #12: Yande.re - 03946f1592779783c79a4708dc4bb956_1.jpg"
+  },
+  "data": {
+    "ext_urls": ["https:\/\/danbooru.donmai.us\/post\/show\/3531864", "https:\/\/yande.re\/post\/show\/544704", "https:\/\/gelbooru.com\/index.php?page=post\u0026s=view\u0026id=4769214"],
+    "danbooru_id": 3531864,
+    "yandere_id": 544704,
+    "gelbooru_id": 4769214,
+    "creator": "mitsudoue",
+    "material": "go-toubun no hanayome",
+    "characters": "nakano miku",
+    "source": "https:\/\/i.pximg.net\/img-original\/img\/2019\/06\/09\/18\/53\/51\/75140670_p0.jpg"
+  }
+}, {
+  "header": {
+    "similarity": "94.8",
+    "thumbnail": "https:\/\/img3.saucenao.com\/booru\/1\/6\/16ff91fb96937737c0fd96dd91cbdeea_0.jpg",
+    "index_id": 9,
+    "index_name": "Index #9: Danbooru - 16ff91fb96937737c0fd96dd91cbdeea_0.jpg"
+  },
+  "data": {
+    "ext_urls": ["https:\/\/danbooru.donmai.us\/post\/show\/3530820", "https:\/\/gelbooru.com\/index.php?page=post\u0026s=view\u0026id=4767801"],
+    "danbooru_id": 3530820,
+    "gelbooru_id": 4767801,
+    "creator": "mitsudoue",
+    "material": "go-toubun no hanayome",
+    "characters": "nakano miku",
+    "source": "https:\/\/twitter.com\/mitsudoue_\/status\/1137284138619170816"
+  }
+}, {
+  "header": {
+    "similarity": "51.48",
+    "thumbnail": "https:\/\/img1.saucenao.com\/res\/pixiv\/1662\/16626826_s.jpg?auth=RHtmpRcXYmBC6XIM6QdHSA\u0026exp=1562940106",
+    "index_id": 5,
+    "index_name": "Index #5: Pixiv Images - 16626826_s.jpg"
+  },
+  "data": {
+    "ext_urls": ["https:\/\/www.pixiv.net\/member_illust.php?mode=medium\u0026illust_id=16626826"],
+    "title": "\u4e8c\u3064\u306e\u72ed\u9593\u3067",
+    "pixiv_id": 16626826,
+    "member_name": "\u8305\u8349",
+    "member_id": 173129
+  }
+}, {
+  "header": {
+    "similarity": "49.55",
+    "thumbnail": "https:\/\/img3.saucenao.com\/dA\/8996\/89968183.jpg",
+    "index_id": 34,
+    "index_name": "Index #34: deviantArt - 89968183.jpg"
+  },
+  "data": {
+    "ext_urls": ["https:\/\/deviantart.com\/view\/89968183"],
+    "title": "Attitude",
+    "da_id": 89968183,
+    "author_name": "capture-romance",
+    "author_url": "http:\/\/capture-romance.deviantart.com"
+  }
+}, {
+  "header": {
+    "similarity": "47.37",
+    "thumbnail": "https:\/\/img3.saucenao.com\/booru\/9\/3\/93d8de3b1a7f39aae96968ee0dfa0612_2.jpg",
+    "index_id": 9,
+    "index_name": "Index #9: Danbooru - 93d8de3b1a7f39aae96968ee0dfa0612_0.jpg"
+  },
+  "data": {
+    "ext_urls": ["https:\/\/danbooru.donmai.us\/post\/show\/2100991", "https:\/\/gelbooru.com\/index.php?page=post\u0026s=view\u0026id=2816931", "https:\/\/chan.sankakucomplex.com\/post\/show\/4782921"],
+    "danbooru_id": 2100991,
+    "gelbooru_id": 2816931,
+    "sankaku_id": 4782921,
+    "creator": "mishin (mbmnk)",
+    "material": "kantai collection",
+    "characters": "hayashimo (kantai collection)",
+    "source": "http:\/\/i2.pixiv.net\/img-original\/img\/2015\/08\/19\/19\/06\/55\/52069189"
+  }
+}];
 
 Page({
   data: {
     selectedPath: '',
     results: [],
-    highSimilarityResults: mock,
+    highSimilarityResults: [],
     lowSimilarityResults: [],
     showMore: false
   },
