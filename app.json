@@ -11,8 +11,9 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#000",
+    "color": "#fff",
     "selectedColor": "#c9171e",
+    "backgroundColor": "#000",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -29,7 +30,7 @@
     ]
   },
   "networkTimeout": {
-    "uploadFile": 10000,
+    "uploadFile": 20000,
     "request": 10000
   }
 }

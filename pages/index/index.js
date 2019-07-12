@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const apiKey = require('../../constants/apiKey.js');
+const { picSearchAPI } = require('../../constants/config.js');
 
 Page({
   data: {
@@ -88,16 +90,17 @@ Page({
     });
     wx.showLoading({
       title: '搜索中',
-      mask: true, // 搜索时禁止点击
+      // mask: true,
     });
     const { selectedPath } = this.data;
     wx.uploadFile({
-      url: 'https://www.whitealbum.cc/search.php',
+      url: picSearchAPI,
       // url: 'http://localhost:4444/search.php',
       filePath: selectedPath,
       name: 'file',
       formData: {
-        'output_type': 2
+        'output_type': 2,
+        'api_key': apiKey
       },
       success: (res) => {
         console.log('res', res);
