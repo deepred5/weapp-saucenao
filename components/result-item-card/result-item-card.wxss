@@ -6,11 +6,9 @@
   border: 10rpx solid #fff;
   display: flex;
   position: relative;
-  margin-bottom: 80rpx;
 }
 
 .thumbnail {
-  width: 200rpx;
   margin-right: 20rpx;
 }
 
@@ -28,4 +26,6 @@
   position: absolute;
   top: -50rpx;
   right: -10rpx;
+  text-shadow: 2px 2px 0 #fc0d1b;
+  transform: perspective(500px) skew(-15deg) rotateY(-15deg);
 }
