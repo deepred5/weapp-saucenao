@@ -111,70 +111,8 @@ Page({
       showMore: true
     })
   },
-  selectPic() {
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '从聊天中选择'],
-      success: (res) => {
-        const { tapIndex } = res;
-        if (tapIndex === 0) {
-          this.selectPicFromAlbum();
-        } else if (tapIndex === 1) {
-          this.selectPicFromChat();
-        }
-      }
-    })
-  },
-
-  checkFileSize(size) {
-    if (Math.round(size / 1024 / 1024) > 6) {
-      wx.showToast({
-        title: '上传图片太大',
-        icon: 'none'
-      });
-      return false;
-    }
-
-    return true;
-  },
-
-  selectPicFromAlbum() {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: (res) => {
-        const tempFilePaths = res.tempFilePaths;
-        const size = res.tempFiles[0].size;
-        const result = this.checkFileSize(size);
-        if (!result) {
-          return;
-        }
-        this.setData({
-          selectedPath: tempFilePaths[0]
-        }, this.searchResult)
-      }
-    })
-  },
-
-  selectPicFromChat() {
-    wx.chooseMessageFile({
-      count: 1,
-      type: 'image',
-      success: (res) => {
-        const tempFilePaths = res.tempFiles[0].path;
-        const size = res.tempFiles[0].size;
-        const result = this.checkFileSize(size);
-        if (!result) {
-          return;
-        }
-        this.setData({
-          selectedPath: tempFilePaths
-        }, this.searchResult);
-      }
-    })
-  },
-
-  searchResult() {
+  
+  onPicSelectSuccess(e) {
     // 清空上次数据
     this.setData({
       results: [],
@@ -186,7 +124,7 @@ Page({
       title: '搜索中',
       // mask: true,
     });
-    const { selectedPath } = this.data;
+    const { selectedPath } = e.detail;
     wx.uploadFile({
       url: picSearchAPI,
       // url: 'http://localhost:4444/search.php',

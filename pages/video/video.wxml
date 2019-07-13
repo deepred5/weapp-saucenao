@@ -1,2 +1,4 @@
 <!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<view class="container search-video">
+  <select-pic bind:picSelectSuccess="onPicSelectSuccess" />
+</view>

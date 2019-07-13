@@ -1,0 +1,9 @@
+<!--components/select-pic/select-pic.wxml-->
+<view class="select-pic-container">
+  <view class="select-background">
+    <image src="{{selectedPath}}" style="height: 100%" mode="aspectFit"></image>
+  </view>
+  <view class="search-btn-container">
+    <button class="search-btn" bindtap="selectPic" hover-class="search-btn-hover">选择图片</button>
+  </view>
+</view>
