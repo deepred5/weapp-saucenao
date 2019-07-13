@@ -45,6 +45,7 @@
         </view>
       </view>
       <text selectable class="desc" wx:if="{{cardData.title}}">{{cardData.title}}</text>
+      <text selectable class="desc" wx:if="{{cardData.synonyms_chinese && cardData.synonyms_chinese.length}}">{{util.join(cardData.synonyms_chinese, ', ')}}</text>
       <text selectable class="desc" wx:if="{{cardData.from}}"><text class="text-shadow">匹配时间点:</text> {{util.formatSeconds(cardData.from)}}</text>
       <text selectable class="desc" wx:if="{{cardData.episode}}"><text class="text-shadow">级数:</text> {{cardData.episode}}</text>
       <text selectable class="desc" wx:if="{{cardData.filename}}"><text class="text-shadow">文件名:</text> {{cardData.filename}}</text>
