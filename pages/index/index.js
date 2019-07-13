@@ -10,7 +10,7 @@ Page({
     results: [],
     highSimilarityResults: [],
     lowSimilarityResults: [],
-    showMore: false,
+    showMore: false
   },
   onPicSelectSuccess(e) {
     // 清空上次数据

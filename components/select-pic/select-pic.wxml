@@ -4,10 +4,10 @@
     <image src="{{selectedPath}}" style="height: 100%" mode="aspectFit"></image>
   </view>
   <view class="search-btn-container">
-    <button class="search-btn" bindtap="selectPic" hover-class="search-btn-hover">选择图片</button>
+    <button class="search-btn {{ iconType === 'tips' ? 'search-btn-left-skew' : 'search-btn-right-skew' }}" bindtap="selectPic" hover-class="search-btn-hover">选择图片</button>
   </view>
   <view class="select-tips">
     <view class="{{iconType}}"></view>
-    <text class="text-shadow">选择动漫图片能提高识别率</text>
+    <text class="text-shadow {{ iconType === 'phone' ? 'right-skew' : '' }}">选择动漫图片能提高识别率</text>
   </view>
 </view>

@@ -47,10 +47,10 @@ Component({
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function () {
-      console.log('list show');
+      // console.log('list show');
      },
     hide: function () { 
-      console.log('list hide');
+      // console.log('list hide');
     },
     resize: function () { },
   },

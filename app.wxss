@@ -10,6 +10,6 @@ page {
   display: inline-block;
 }
 
-.item-skew {
-  transform: perspective(500px) skew(-15deg) rotateY(-15deg);
+.right-skew {
+  transform: perspective(500px) skew(15deg) rotateY(15deg);
 }

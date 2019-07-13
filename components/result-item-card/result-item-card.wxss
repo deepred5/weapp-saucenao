@@ -28,6 +28,8 @@
   right: -10rpx;
 }
 
+
+
 .copy-container {
   border: 2px solid #fff;
   display: inline-block;
@@ -58,4 +60,8 @@
 
 .has-copy {
   padding: 12rpx 0;
+}
+
+.copy-container-right {
+  transform: perspective(300px) skew(15deg) rotateY(5deg);
 }

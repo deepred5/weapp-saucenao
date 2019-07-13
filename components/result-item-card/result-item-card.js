@@ -27,9 +27,7 @@ Component({
    */
   methods: {
     clipboard(e) {
-      console.log(this.data.cardType)
       const content = e.currentTarget.dataset.content;
-      console.log('show', this.data.cardType);
       wx.setClipboardData({
         data: content
       })

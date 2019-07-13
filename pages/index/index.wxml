@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container search-pic">
-  <select-pic bind:picSelectSuccess="onPicSelectSuccess" />
+  <select-pic iconType="tips" bind:picSelectSuccess="onPicSelectSuccess" />
   <result-list cardType="picture" showMore="{{showMore}}" highSimilarityResults="{{highSimilarityResults}}" lowSimilarityResults="{{lowSimilarityResults}}" />
 </view>
