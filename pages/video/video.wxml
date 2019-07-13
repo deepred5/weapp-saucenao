@@ -1,4 +1,5 @@
 <!--pages/video/video.wxml-->
 <view class="container search-video">
-  <select-pic bind:picSelectSuccess="onPicSelectSuccess" />
+  <select-pic iconType="tips" bind:picSelectSuccess="onPicSelectSuccess" />
+  <result-list cardType="video" showMore="{{showMore}}" highSimilarityResults="{{highSimilarityResults}}" lowSimilarityResults="{{lowSimilarityResults}}" />
 </view>

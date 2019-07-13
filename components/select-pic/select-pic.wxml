@@ -6,4 +6,8 @@
   <view class="search-btn-container">
     <button class="search-btn" bindtap="selectPic" hover-class="search-btn-hover">选择图片</button>
   </view>
+  <view class="select-tips">
+    <view class="{{iconType}}"></view>
+    <text class="text-shadow">选择动漫图片能提高识别率</text>
+  </view>
 </view>

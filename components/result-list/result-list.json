@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "result-item-card": "/components/result-item-card/result-item-card"
+  }
+}

@@ -17,7 +17,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "搜图",
+        "text": "搜图片",
         "iconPath": "./assets/icons/pic.png",
         "selectedIconPath": "./assets/icons/pic-selected.png"
       },
@@ -31,6 +31,6 @@
   },
   "networkTimeout": {
     "uploadFile": 20000,
-    "request": 10000
+    "request": 20000
   }
 }

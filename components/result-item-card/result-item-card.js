@@ -4,11 +4,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cardData: Object
+    cardData: Object,
+    cardType: {
+      type: String,
+      value: 'picture',
+    }
   },
 
   options: {
-    styleIsolation: 'apply-shared'
+    styleIsolation: 'apply-shared' // 能被页面级别或者设成了shared的其他组件影响
   },
 
   /**
@@ -23,8 +27,9 @@ Component({
    */
   methods: {
     clipboard(e) {
+      console.log(this.data.cardType)
       const content = e.currentTarget.dataset.content;
-
+      console.log('show', this.data.cardType);
       wx.setClipboardData({
         data: content
       })
@@ -33,7 +38,6 @@ Component({
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function () {
-      console.log('show');
     },
     hide: function () { },
     resize: function () { },

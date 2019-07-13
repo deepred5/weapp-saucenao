@@ -9,3 +9,7 @@ page {
   transform: perspective(500px) skew(-15deg) rotateY(-15deg);
   display: inline-block;
 }
+
+.item-skew {
+  transform: perspective(500px) skew(-15deg) rotateY(-15deg);
+}

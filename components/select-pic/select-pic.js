@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    iconType: {
+      type: String,
+      value: 'phone'
+    }
+  },
 
+  options: {
+    styleIsolation: 'apply-shared'
   },
 
   /**

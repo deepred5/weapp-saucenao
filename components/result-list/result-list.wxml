@@ -1,0 +1,15 @@
+<!--components/result-list/result-list.wxml-->
+<view class="search-result">
+  <block wx:for="{{highSimilarityResults}}" wx:key="{{index}}">
+    <result-item-card cardType="{{cardType}}" cardData="{{item}}" class="result-card" />
+  </block>
+  <view class="show-more" wx:if="{{lowSimilarityResults.length > 0 && !showMore}}" bindtap="showMore">
+    <text class="hight-light">查</text>
+    <text>看</text>
+    <text class="hight-light">更</text>
+    <text>多</text>
+  </view>
+  <block wx:for="{{lowSimilarityResults}}" wx:key="{{index}}" wx:if="{{showMore}}">
+    <result-item-card cardType="{{cardType}}" cardData="{{item}}" />
+  </block>
+</view>

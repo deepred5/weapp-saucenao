@@ -1,35 +1,55 @@
 <wxs src="../../utils/util.wxs" module="util" />
 
 <view class="result-item">
-  <text class="similarity text-shadow">{{cardData.header.similarity}}%</text>
-  <view class="thumbnail">
-    <image style="width: 200rpx;" src="{{cardData.header.thumbnail}}" mode="widthFix"></image>
-  </view>
-  <view class="result-info">
-    <text selectable class="desc" wx:if="{{cardData.data.title}}">{{cardData.data.title}}</text>
-    <text selectable class="desc" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') === -1}}">{{cardData.data.source}}</text>
-    <view class="has-copy" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') > -1}}">
-      <text class="desc text-shadow">来源</text>
-      <view class="copy-container" bindtap="clipboard" data-content="{{cardData.data.source}}">
-        <text class="copy1">复</text>
-        <text class="copy2">制</text>
-      </view>
+  <block wx:if="{{cardType === 'picture'}}">
+    <text class="similarity text-shadow">{{cardData.header.similarity}}%</text>
+    <view class="thumbnail">
+      <image style="width: 200rpx;" src="{{cardData.header.thumbnail}}" mode="widthFix"></image>
+    </view>
+    <view class="result-info">
+      <text selectable class="desc" wx:if="{{cardData.data.title}}">{{cardData.data.title}}</text>
+      <text selectable class="desc" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') === -1}}">{{cardData.data.source}}</text>
+      <view class="has-copy" wx:elif="{{cardData.data.source && util.indexOf(cardData.data.source, 'http') > -1}}">
+        <text class="desc text-shadow">来源</text>
+        <view class="copy-container" bindtap="clipboard" data-content="{{cardData.data.source}}">
+          <text class="copy1">复</text>
+          <text class="copy2">制</text>
+        </view>
 
-    </view>
-    <text selectable class="desc" wx:if="{{cardData.data.creator}}"><text class="text-shadow">Creator:</text> {{cardData.data.creator}}</text>
-    <text selectable class="desc" wx:elif="{{cardData.data.member_name}}"><text class="text-shadow">Member:</text> {{cardData.data.member_name}}</text>
-    <text selectable class="desc" wx:elif="{{cardData.data.author_name}}"><text class="text-shadow">Author:</text> {{cardData.data.author_name}}</text>
-    <text selectable class="desc" wx:elif="{{cardData.data.author}}"><text class="text-shadow">Author:</text> {{cardData.data.author}}</text>
-    <text selectable class="desc" wx:elif="{{cardData.data.artist}}"><text class="text-shadow">Artist:</text> {{cardData.data.artist}}</text>
-    <text selectable class="desc" wx:if="{{cardData.data.pixiv_id}}"><text class="text-shadow">Pixiv ID:</text> {{cardData.data.pixiv_id}}</text>
-    <text selectable class="desc" wx:if="{{cardData.data.material}}"><text class="text-shadow">Material:</text> {{cardData.data.material}}</text>
-    <text selectable class="desc" wx:if="{{cardData.data.characters}}"><text class="text-shadow">Characters:</text> {{cardData.data.characters}}</text>
-    <view class="has-copy" wx:if="{{cardData.data.ext_urls && cardData.data.ext_urls.length}}">
-      <text class="desc text-shadow">相关链接</text>
-      <view class="copy-container" bindtap="clipboard" data-content="{{util.join(cardData.data.ext_urls)}}">
-        <text class="copy1">复</text>
-        <text class="copy2">制</text>
+      </view>
+      <text selectable class="desc" wx:if="{{cardData.data.creator}}"><text class="text-shadow">Creator:</text> {{cardData.data.creator}}</text>
+      <text selectable class="desc" wx:elif="{{cardData.data.member_name}}"><text class="text-shadow">Member:</text> {{cardData.data.member_name}}</text>
+      <text selectable class="desc" wx:elif="{{cardData.data.author_name}}"><text class="text-shadow">Author:</text> {{cardData.data.author_name}}</text>
+      <text selectable class="desc" wx:elif="{{cardData.data.author}}"><text class="text-shadow">Author:</text> {{cardData.data.author}}</text>
+      <text selectable class="desc" wx:elif="{{cardData.data.artist}}"><text class="text-shadow">Artist:</text> {{cardData.data.artist}}</text>
+      <text selectable class="desc" wx:if="{{cardData.data.pixiv_id}}"><text class="text-shadow">Pixiv ID:</text> {{cardData.data.pixiv_id}}</text>
+      <text selectable class="desc" wx:if="{{cardData.data.material}}"><text class="text-shadow">Material:</text> {{cardData.data.material}}</text>
+      <text selectable class="desc" wx:if="{{cardData.data.characters}}"><text class="text-shadow">Characters:</text> {{cardData.data.characters}}</text>
+      <view class="has-copy" wx:if="{{cardData.data.ext_urls && cardData.data.ext_urls.length}}">
+        <text class="desc text-shadow">相关链接</text>
+        <view class="copy-container" bindtap="clipboard" data-content="{{util.join(cardData.data.ext_urls)}}">
+          <text class="copy1">复</text>
+          <text class="copy2">制</text>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
+  <block wx:else>
+    <text class="similarity text-shadow">{{util.toFixed(cardData.similarity, 4) * 100}}%</text>
+    <view class="result-info">
+     <view class="has-copy" wx:if="{{cardData.anime}}">
+        <text class="desc text-shadow">{{cardData.anime}}</text>
+        <view class="copy-container" bindtap="clipboard" data-content="{{cardData.anime}}">
+          <text class="copy1">复</text>
+          <text class="copy2">制</text>
+        </view>
+      </view>
+      <text selectable class="desc" wx:if="{{cardData.title}}">{{cardData.title}}</text>
+      <text selectable class="desc" wx:if="{{cardData.from}}"><text class="text-shadow">匹配时间点:</text> {{util.formatSeconds(cardData.from)}}</text>
+      <text selectable class="desc" wx:if="{{cardData.episode}}"><text class="text-shadow">级数:</text> {{cardData.episode}}</text>
+      <text selectable class="desc" wx:if="{{cardData.filename}}"><text class="text-shadow">文件名:</text> {{cardData.filename}}</text>
+      <text selectable class="desc" wx:if="{{cardData.season}}"><text class="text-shadow">Season:</text> {{cardData.season}}</text>
+      <text selectable class="desc" wx:if="{{util.mytypeof(cardData.is_adult) === 'boolean'}}"><text class="text-shadow">18禁:</text> {{cardData.is_adult}}</text>
+    </view>
+  </block>
 </view>

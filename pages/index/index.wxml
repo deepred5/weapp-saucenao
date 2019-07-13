@@ -1,15 +1,5 @@
 <!--index.wxml-->
 <view class="container search-pic">
   <select-pic bind:picSelectSuccess="onPicSelectSuccess" />
-  <view class="search-result">
-    <block wx:for="{{highSimilarityResults}}" wx:key="{{index}}">
-      <result-item-card cardData="{{item}}" class="result-card" />
-    </block>
-    <view class="show-more" wx:if="{{lowSimilarityResults.length > 0 && !showMore}}" bindtap="showMore">
-      <text class="hight-light">查</text><text>看</text><text class="hight-light">更</text><text>多</text>
-    </view>
-    <block wx:for="{{lowSimilarityResults}}" wx:key="{{index}}" wx:if="{{showMore}}">
-      <result-item-card cardData="{{item}}" />
-    </block>
-  </view>
+  <result-list cardType="picture" showMore="{{showMore}}" highSimilarityResults="{{highSimilarityResults}}" lowSimilarityResults="{{lowSimilarityResults}}" />
 </view>

@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "搜图",
+  "navigationBarTitleText": "搜图片",
   "usingComponents": {
-    "result-item-card": "/components/result-item-card/result-item-card",
-    "select-pic": "/components/select-pic/select-pic"
+    "select-pic": "/components/select-pic/select-pic",
+    "result-list": "/components/result-list/result-list"
   }
 }

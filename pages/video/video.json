@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "搜动画",
   "usingComponents": {
-    "select-pic": "/components/select-pic/select-pic"
+    "select-pic": "/components/select-pic/select-pic",
+    "result-list": "/components/result-list/result-list"
   }
 }
