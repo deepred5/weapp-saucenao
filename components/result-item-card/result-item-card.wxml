@@ -35,7 +35,7 @@
     </view>
   </block>
   <block wx:else>
-    <text class="similarity text-shadow">{{util.toFixed(cardData.similarity, 4) * 100}}%</text>
+    <text class="similarity text-shadow">{{util.toFixed(cardData.similarity * 100, 2)}}%</text>
     <view class="result-info">
      <view class="has-copy" wx:if="{{cardData.anime}}">
         <text class="desc text-shadow">{{cardData.anime}}</text>
