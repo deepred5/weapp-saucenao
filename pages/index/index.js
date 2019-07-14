@@ -36,13 +36,21 @@ Page({
         console.log('res', res);
         const { statusCode } = res;
         if (statusCode === 200) {
-          const data = JSON.parse(res.data);
-          console.log(data);
-          this.setData({
-            results: data.results,
-            highSimilarityResults: data.results.slice(0, 3),
-            lowSimilarityResults: data.results.slice(3)
-          })
+          try {
+            const data = JSON.parse(res.data);
+            console.log(data);
+            this.setData({
+              results: data.results,
+              highSimilarityResults: data.results.slice(0, 3),
+              lowSimilarityResults: data.results.slice(3)
+            });
+          } catch(err) {
+            wx.showToast({
+              title: '解析失败: ' + err,
+              icon: 'none',
+              duration: 2500
+            });
+          }
         } else {
           let title = `搜索异常: ${statusCode}`;
           if (statusCode === 413) {
@@ -62,7 +70,7 @@ Page({
           title: '搜索失败',
           icon: 'none',
           duration: 2500
-        })
+        });
 
       },
       complete: () => {
