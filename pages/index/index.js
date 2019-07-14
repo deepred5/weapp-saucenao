@@ -3,7 +3,7 @@
 const app = getApp();
 const { picSearchAPI } = require('../../constants/config.js');
 const apiKey = require('../../constants/apiKey.js');
-const mock = require('../../mock/picMock.js');
+// const mock = require('../../mock/picMock.js');
 
 Page({
   data: {
@@ -26,7 +26,6 @@ Page({
     const { selectedPath } = e.detail;
     wx.uploadFile({
       url: picSearchAPI,
-      // url: 'http://localhost:4444/search.php',
       filePath: selectedPath,
       name: 'file',
       formData: {
@@ -72,14 +71,4 @@ Page({
       }
     })
   },
-
-  preveiwPic() {
-    wx.previewImage({
-      current: 'https://files.yande.re/sample/161c4f06c0348be10f58142ba9a502d7/yande.re%20552005%20sample%20loundraw%20seifuku.jpg',
-      urls: ['https://files.yande.re/sample/161c4f06c0348be10f58142ba9a502d7/yande.re%20552005%20sample%20loundraw%20seifuku.jpg', "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=60581467"],
-      success(res) {
-        console.log(res);
-      }
-    })
-  }
 })

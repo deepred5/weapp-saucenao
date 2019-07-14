@@ -27,7 +27,7 @@ Component({
    */
   methods: {
     clipboard(e) {
-      const content = e.currentTarget.dataset.content;
+      const { content } = e.currentTarget.dataset;
       wx.setClipboardData({
         data: content
       })

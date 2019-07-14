@@ -1,5 +1,5 @@
 const { videoSearchAPI } = require('../../constants/config.js');
-const mock = require('../../mock/videoMock.js');
+// const mock = require('../../mock/videoMock.js');
 
 Page({
   data: {
