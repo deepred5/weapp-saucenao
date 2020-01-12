@@ -40,6 +40,7 @@ Page({
             image: imageBase64
           },
           success: (res) => {
+            wx.hideLoading();
             const { statusCode, data } = res;
             if (statusCode === 200) {
               const { docs } = data;
@@ -66,6 +67,7 @@ Page({
             }
           },
           fail: () => {
+            wx.hideLoading();
             wx.showToast({
               title: '搜索失败',
               icon: 'none',
@@ -74,7 +76,6 @@ Page({
           },
           complete: () => {
             console.log('complete');
-            wx.hideLoading();
           }
         })
       },

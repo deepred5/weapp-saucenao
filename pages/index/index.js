@@ -34,6 +34,7 @@ Page({
       },
       success: (res) => {
         console.log('res', res);
+        wx.hideLoading();
         const { statusCode } = res;
         if (statusCode === 200) {
           try {
@@ -66,6 +67,7 @@ Page({
       },
       fail: (err) => {
         console.log('err', err);
+        wx.hideLoading();
         wx.showToast({
           title: '搜索失败',
           icon: 'none',
@@ -75,7 +77,6 @@ Page({
       },
       complete: () => {
         console.log('complete');
-        wx.hideLoading();
       }
     })
   },
