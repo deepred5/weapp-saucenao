@@ -87,6 +87,10 @@ Page({
         })
       }
     })
-  }
+  },
+
+  onShareAppMessage() {
+    // 当前页面可分享
+  },
 
 })

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "搜图片",
+  "navigationBarTitleText": "搜图片-识图娘",
   "usingComponents": {
     "select-pic": "/components/select-pic/select-pic",
     "result-list": "/components/result-list/result-list"
