@@ -3,7 +3,7 @@
 const app = getApp();
 const { picSearchAPI } = require('../../constants/config.js');
 // https://saucenao.com/user.php?page=search-api 网站自行注册获取apiKey
-const apiKey = require('../../constants/apiKey.js');
+const apiKey = require('../../constants/apiKey.js').sauceNAO;
 // const mock = require('../../mock/picMock.js');
 
 Page({
