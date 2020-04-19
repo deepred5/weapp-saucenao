@@ -4,6 +4,6 @@ App({
     
   },
   globalData: {
-   
+    showAd: false
   }
 })

@@ -1,5 +1,7 @@
+const app = getApp();
 const { videoSearchAPI } = require('../../constants/config.js');
 // const mock = require('../../mock/videoMock.js');
+let interstitialAd = null;
 
 Page({
   data: {
@@ -76,6 +78,11 @@ Page({
           },
           complete: () => {
             console.log('complete');
+            if (interstitialAd) {
+              interstitialAd.show().catch((err) => {
+                console.error(err)
+              })
+            }
           }
         })
       },
@@ -85,12 +92,20 @@ Page({
           icon: 'none',
           duration: 2500
         })
-      }
+      },
     })
   },
 
   onShareAppMessage() {
     // 当前页面可分享
   },
+
+  onLoad() {
+    if(wx.createInterstitialAd && app.globalData.showAd){
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-eb9d1b1618da92ac'
+      });
+    }
+  }
 
 })

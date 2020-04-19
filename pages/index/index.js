@@ -5,6 +5,7 @@ const { picSearchAPI } = require('../../constants/config.js');
 // https://saucenao.com/user.php?page=search-api 网站自行注册获取apiKey
 const apiKey = require('../../constants/apiKey.js').sauceNAO;
 // const mock = require('../../mock/picMock.js');
+let interstitialAd = null;
 
 Page({
   data: {
@@ -78,10 +79,22 @@ Page({
       },
       complete: () => {
         console.log('complete');
+        if (interstitialAd) {
+          interstitialAd.show().catch((err) => {
+            console.error(err)
+          })
+        }
       }
     })
   },
   onShareAppMessage() {
     // 当前页面可分享
   },
+  onLoad() {
+    if(wx.createInterstitialAd && app.globalData.showAd){
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-eb9d1b1618da92ac'
+      });
+    }
+  }
 })
